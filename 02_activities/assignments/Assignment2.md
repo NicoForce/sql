@@ -54,7 +54,19 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 **HINT:** search type 1 vs type 2 slowly changing dimensions. 
 
 ```
-Your answer...
+Architecture Type 1: Changes are overwritten
+The table CUSTOMER_ADDRESS will have a id column as primary key, a foreign key reference to the customer id, and the customer address as the information to be relevant.
+
+For this architecture type, it's not important to keep a history of customer address, so whenever and update is needed, an UPDATE will be performed against the customer address id that already exists.
+
+It's also possible that instead of creating a CUSTOMER_ADDRESS table, we can just add the address directly to the customer table as another column, that would be supported as well.
+
+Architecture Type 2: Changes are retained
+The table will have the same structure as in the previous architecture, the only difference being that a new column to check if the address is the current one will be added as a boolean.
+
+When a new address need to be added for a customer, there should be an INSERT into the CUSTOMER_ADDRESS table, the new address should be marked as current, while any old addresses should be marked as not current.
+
+The idea with this architecture is, if the history of customer addresses is relevant for the data, then architecture 2 should be used.
 ```
 
 ***
