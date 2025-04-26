@@ -66,7 +66,7 @@ The table will have the same structure as in the previous architecture, the only
 
 When a new address need to be added for a customer, there should be an INSERT into the CUSTOMER_ADDRESS table, the new address should be marked as current, while any old addresses should be marked as not current.
 
-The idea with this architecture is, if the history of customer addresses is relevant for the data, then architecture 2 should be used.
+The idea with this architecture is, if the history of customer addresses is relevant, then architecture 2 should be used.
 ```
 
 ***
